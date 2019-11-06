@@ -1,0 +1,27 @@
+.image-container {
+	height: 150px;
+	margin: 0 auto 20px;
+	position: relative;
+}
+
+#close-btn {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	--box-shadow: none;
+	--background: #f56473;
+  --background-activated: #f56473;
+	--border-radius: 0;
+	margin: 0;
+	right: 5%;
+	top: 5%;
+	color: white;
+	font-weight: bold;
+	font-size: 0;
+
+	ion-icon {
+		color: white;
+		font-weight: bold;
+		font-size: 36px;
+	}
+}

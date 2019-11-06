@@ -1,0 +1,14 @@
+$pale-blue: #97c2ef;
+// $violet: #7d8aff;
+$violet: #6ba0fe;
+$field-background: #f8faff;
+// $field-background: #e8efff;
+$chip-inactive-color: #eff2f8;
+$chip-active-color: #7c84c0;
+
+$assistant: "Assistant", sans-serif;
+
+@mixin assistant-font-family {
+  font-family: $assistant !important;
+  font-weight: 400;
+}

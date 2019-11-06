@@ -1,0 +1,30 @@
+<app-header (click)="closeModal()" showBackBtn="true" defaultHref="online-doctor-prescriptions"
+  backBtnText="{{text ? text.back : ''}}"></app-header>
+<ion-content padding-horizontal>
+  <ion-item class="violet-text register-form-field">
+    <ion-textarea row="6" type="text" [formControl]="userComment" placeholder="{{ text?.write_your_comment }}">
+    </ion-textarea>
+  </ion-item>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col class="col-auto">
+        <ion-button (click)="uploadImage()" class="btn">Attach photo</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center *ngFor="let image of images; let i = index">
+      <ion-col size="9">
+        <div class="image-container">
+          <ion-img class="h-100" [src]="image.src"></ion-img>
+          <ion-button size="small" id="close-btn" (click)="deleteImage(i)">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="bottom-btn" (click)="submit()">{{ text?.submit }}</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,31 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-toggle *ngIf="!showBackBtn">
+        <ion-button>
+          <ion-icon src="assets/screens/violet-menu-icon.svg"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+      <ion-back-button class="violet-text" *ngIf="showBackBtn" (click)="navigateTo(defaultHref)"
+        [defaultHref]="defaultHref" [text]="backBtnText"></ion-back-button>
+    </ion-buttons>
+    <ion-img id="home-img" src="assets/screens/home-blue.svg" (click)="navigateTo('main')"></ion-img>
+    <ion-buttons slot="end">
+      <ion-grid>
+        <ion-row>
+          <ion-col id="logout-col" [hidden]="!isAuthorized" (click)="logout()">
+            <span class="violet-text">{{ text?.logout }}</span>
+          </ion-col>
+          <ion-col align-self-center>
+            <div id="logo">
+              <div id="top-part">
+                <div id="circle"></div>
+              </div>
+              <div id="bottom-part"></div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

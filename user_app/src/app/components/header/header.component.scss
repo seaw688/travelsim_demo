@@ -1,0 +1,67 @@
+@import "../../../utilities";
+
+ion-menu-button {
+  color: $pale-blue;
+}
+
+ion-badge {
+  height: 120%;
+  background: linear-gradient(to right, #6c9eff, #a25ffd);
+  border-radius: 20px;
+  padding: 12px 15px 6px;
+  position: relative;
+  top: -3px;
+}
+
+#logo {
+  height: 26px;
+  width: 18px;
+
+  #top-part {
+    height: 6px;
+    width: 100%;
+    border-radius: 6px;
+    background: linear-gradient(to right, #6c9eff, #a25ffd);
+
+    #circle {
+      width: 6px;
+      height: 6px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: white;
+    }
+  }
+
+  #bottom-part {
+    height: 18px;
+    width: 6px;
+    margin: 2px auto 0;
+    border-radius: 6px;
+    background: linear-gradient(to bottom, #6c9eff, #a25ffd);
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+#logout-col {
+  padding-top: 7px;
+
+  span {
+    white-space: nowrap;
+  }
+}
+
+ion-title {
+  font-weight: 100;
+}
+
+#home-img {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 25px;
+  top: 15px;
+}

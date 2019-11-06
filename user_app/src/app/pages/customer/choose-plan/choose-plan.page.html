@@ -1,0 +1,85 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-menu-toggle>
+        <ion-button>
+          <ion-icon src="assets/screens/violet-menu-icon.svg"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle> -->
+      <ion-back-button class="violet-text" [defaultHref]="defaultHref" text="{{ text ? text.back : '' }}">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-img id="home-img" src="assets/screens/home-blue.svg" (click)="navigateTo('main')"></ion-img>
+    <ion-buttons slot="end">
+      <ion-grid>
+        <ion-row>
+          <ion-col [class.hidden]="hideBage">
+            <ion-badge (click)="navigateTo('my-plan')">{{ text?.your_plan }}</ion-badge>
+          </ion-col>
+          <ion-col align-self-center>
+            <div id="logo">
+              <div id="top-part">
+                <div id="circle"></div>
+              </div>
+              <div id="bottom-part"></div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="text-block" class="violet-text bold-text font-size-16">{{ text?.choose_plan }}</div>
+  <ion-card class="violet-text" *ngFor="let plan of plans" (click)="selectPlan(plan.id)">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row justify-content-between>
+          <ion-col align-self-end class="font-size-16"><span class="bold-text">Plan</span> {{ plan.title }}</ion-col>
+          <ion-col class="col-auto font-size-20">{{ plan.price }}$</ion-col>
+        </ion-row>
+        <ion-row id="three-chips-container" justify-content-between>
+          <ion-col size="9">
+            <ion-row>
+              <ion-col class="col-auto text-center">
+                <ion-chip>
+                  <ion-icon name="call"></ion-icon>
+                </ion-chip>
+                <p class="bold-text mt-5">{{ plan.calls }}</p>
+              </ion-col>
+              <ion-col class="col-auto text-center">
+                <ion-chip>
+                  <ion-icon name="wifi"></ion-icon>
+                </ion-chip>
+                <p class="bold-text mt-5">{{ plan.traffic }} GB</p>
+              </ion-col>
+              <ion-col class="col-auto text-center">
+                <ion-chip>
+                  <ion-icon name="mail"></ion-icon>
+                </ion-chip>
+                <p class="bold-text mt-5">{{ plan.emails }}</p>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col class="col-auto">
+            <ion-chip *ngIf="plan.id !== selectedPlanId; else checkedChip" id="choose-chip">
+              <span class="bold-text">{{ text?.choose }}</span>
+            </ion-chip>
+            <ng-template #checkedChip>
+              <ion-chip id="checked-chip">
+                <ion-icon name="checkmark"></ion-icon>
+              </ion-chip>
+            </ng-template>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button [disabled]="!planIsSelected" class="bottom-btn" (click)="navigateToEnterMobileNumber()">
+      {{ text?.enter_mobile_number }}</ion-button>
+  </ion-toolbar>
+</ion-footer>

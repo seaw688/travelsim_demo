@@ -1,0 +1,342 @@
+// http://ionicframework.com/docs/theming/
+@import "~@ionic/angular/css/core.css";
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import url("https://fonts.googleapis.com/css?family=Assistant:200,400,600");
+
+@import "utilities";
+
+* {
+  @include assistant-font-family;
+}
+
+ion-button {
+  text-transform: unset !important;
+}
+
+ion-item:not(.menu-item) {
+  --inner-border-width: 0;
+  --border-width: 0;
+  --full-highlight-height: 0;
+}
+
+.btn {
+  --background: linear-gradient(to right, #6c9eff, #a25ffd);
+  --background-activated: linear-gradient(to right, #6c9eff, #a25ffd);
+  --border-radius: 30px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.my-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.pb-80 {
+  padding-bottom: 80px;
+}
+
+.col-auto {
+  flex-grow: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.violet-text {
+  color: $violet;
+}
+
+.red-text {
+  color: #e44959;
+}
+
+.error-field {
+  border: solid 1px #e44959 !important;
+}
+
+.disabled-btn {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+ion-backdrop {
+  background-color: $violet;
+  opacity: 0.5;
+}
+
+.alert-wrapper {
+  border-radius: 0 !important;
+  text-align: center;
+  color: $violet;
+  --min-width: 335px;
+
+  .alert-head {
+    padding-bottom: 30px;
+  }
+
+  .alert-message {
+    color: $violet;
+    line-height: 30px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .alert-button-group {
+    padding: 0;
+    display: flex;
+
+    button {
+      flex: 1 0 0;
+      height: 55px;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+      text-transform: unset;
+      color: white;
+
+      .alert-button-inner {
+        justify-content: center;
+      }
+    }
+
+    button:first-child {
+      background: linear-gradient(to right, #8089ff, #9172fe);
+    }
+
+    button:nth-child(2) {
+      background: linear-gradient(to right, #6c9eff, #8381fc);
+    }
+  }
+}
+
+.bold-text {
+  font-weight: 600 !important;
+}
+
+.light-text {
+  font-weight: 200 !important;
+}
+
+.font-size-12 {
+  font-size: 12px !important;
+}
+
+.font-size-14 {
+  font-size: 14px !important;
+}
+
+.font-size-16 {
+  font-size: 16px !important;
+}
+
+.font-size-18 {
+  font-size: 18px !important;
+}
+
+.font-size-20 {
+  font-size: 20px !important;
+}
+
+.font-size-32 {
+  font-size: 32px !important;
+}
+
+.font-size-42 {
+  font-size: 42px !important;
+}
+
+.font-size-64 {
+  font-size: 64px !important;
+}
+
+.form-field {
+  border: solid 1px $violet;
+  border-radius: 10px;
+  --border-radius: 10px;
+
+  margin: 30px 0;
+  padding-left: 20px;
+  --padding-start: 0;
+  --min-height: 0;
+  background-color: $field-background;
+  --background: $field-background;
+  --background-activated: $field-background;
+
+  ion-input,
+  ion-datetime {
+    background-color: $field-background;
+  }
+}
+
+.sc-ion-card-md-h {
+  border-radius: 0;
+}
+
+ion-icon {
+  margin: 0;
+  color: $violet;
+}
+
+ion-chip {
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  padding: 0 16px;
+  margin: 0;
+  background-color: $chip-inactive-color;
+}
+
+#three-chips-container {
+  margin-top: 20px;
+
+  & > ion-col:first-child {
+    padding-top: 0;
+    padding-left: 0;
+  }
+}
+
+#checked-chip {
+  box-shadow: 0 0 20px $chip-active-color;
+  background-color: $chip-active-color;
+  padding: 0;
+
+  ion-icon {
+    color: white;
+    width: 70px;
+    font-size: 35px;
+  }
+}
+
+.select-field {
+  --ion-font-family: "Assistant", sans-serif;
+  border: solid 1px transparent;
+  position: relative;
+  background-color: $field-background;
+  padding-left: 20px;
+
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $field-background;
+  }
+
+  ion-select,
+  ion-datetime {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    padding-left: 0;
+    background-color: $field-background;
+  }
+}
+
+ion-footer {
+  ion-toolbar {
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+
+    ion-button {
+      margin: 0;
+      text-transform: unset;
+      font-size: 18px;
+      width: 100%;
+      height: 80px;
+      --background: linear-gradient(to right, #6c9eff, #a25ffd);
+      --background-activated: linear-gradient(to right, #6c9eff, #a25ffd);
+      --padding-left: 0;
+      --padding-right: 0;
+      --border-radius: 0;
+    }
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.popover .popover-content {
+  transform: translate(25%, 25%) !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+ion-app.cameraView ion-router-outlet {
+  opacity: 0 !important;
+}
+
+ion-app.cameraView,
+ion-app.cameraView ion-content,
+ion-app.cameraView .nav-decor {
+  background-image: url("./assets/screens/qr-code-overlay.svg") !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transform: scale(0.75);
+}
+
+.lock-badge {
+  position: absolute;
+  height: 35%;
+  width: 35%;
+  background: linear-gradient(to bottom, #f7897a, #f56473);
+  border-radius: 50%;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ion-icon {
+    font-size: 4vw;
+  }
+}
+
+.disabled-item > div {
+  border-color: #d4dcef;
+}
+
+.register-form-field {
+  border: solid 1px $violet;
+  border-radius: 10px;
+  --border-radius: 10px;
+
+  margin: 20px 0;
+  padding-left: 20px;
+  --padding-start: 0;
+  --min-height: 0;
+  background-color: $field-background;
+  --background: $field-background;
+  --background-activated: $field-background;
+
+  ion-input {
+    background-color: $field-background;
+  }
+}

@@ -1,0 +1,212 @@
+@import "../../../../utilities";
+
+ion-menu-button {
+  color: $pale-blue;
+}
+
+ion-badge {
+  height: 120%;
+  background: linear-gradient(to right, #6c9eff, #a25ffd);
+  border-radius: 20px;
+  padding: 12px 15px 6px;
+  position: relative;
+  top: -3px;
+}
+
+#logo {
+  height: 26px;
+  width: 18px;
+
+  #top-part {
+    height: 6px;
+    width: 100%;
+    border-radius: 6px;
+    background: linear-gradient(to right, #6c9eff, #a25ffd);
+
+    #circle {
+      width: 6px;
+      height: 6px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: white;
+    }
+  }
+
+  #bottom-part {
+    height: 18px;
+    width: 6px;
+    margin: 2px auto 0;
+    border-radius: 6px;
+    background: linear-gradient(to bottom, #6c9eff, #a25ffd);
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+#logout-col {
+  padding-top: 7px;
+}
+
+ion-title {
+  font-weight: 100;
+}
+
+#upload-img-block {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background: url("../../../../assets//screens/subtract.svg");
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+
+  ion-img {
+    width: 45%;
+    z-index: 1;
+  }
+
+  #rect {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    bottom: -10%;
+    background-color: white;
+    margin: 0 auto;
+    transform: rotate(45deg);
+  }
+
+  #label {
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    box-shadow: 0 0 3px;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-img {
+      width: 65%;
+    }
+  }
+}
+
+#img-block {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center center;
+
+  #label {
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    box-shadow: 0 0 3px;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-img {
+      width: 65%;
+    }
+  }
+}
+
+#img-profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.register-form-field {
+  border: solid 1px $violet;
+  border-radius: 10px;
+  --border-radius: 10px;
+
+  margin: 20px 0;
+  padding-left: 20px;
+  --padding-start: 0;
+  --min-height: 0;
+  background-color: $field-background;
+  --background: $field-background;
+  --background-activated: $field-background;
+
+  ion-input {
+    background-color: $field-background;
+  }
+}
+
+#google-btn {
+  --background: red;
+}
+
+#facebook-btn {
+  --background: cornflowerblue;
+}
+
+.attach-btn-col {
+  div {
+    position: relative;
+    width: fit-content;
+
+    div {
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      box-shadow: 0 0 3px;
+      border-radius: 50%;
+      background-color: white;
+      z-index: 2;
+      right: 15px;
+      top: -5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      ion-img {
+        width: 60%;
+      }
+    }
+
+    .attach-btn {
+      text-transform: unset;
+      height: 35px;
+      font-size: 14px;
+      --border-radius: 45px;
+      --background: linear-gradient(to right, #f56272, #f78a7b);
+      --background-activated: linear-gradient(to right, #f56272, #f78a7b);
+
+      .btn-img-wrapper {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 0;
+        opacity: 0.5;
+        background-size: cover;
+        background-position: center center;
+      }
+    }
+  }
+}
+
+.error-msg {
+  color: red;
+  position: absolute;
+  top: 245px;
+  left: 25px;
+}
+
+#to-login-btn {
+  float: right;
+  width: max-content;
+}

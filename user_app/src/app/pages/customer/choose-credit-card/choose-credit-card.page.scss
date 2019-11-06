@@ -1,0 +1,20 @@
+@import "../../../../utilities";
+
+.register-form-field {
+  border: solid 1px $violet;
+  border-radius: 10px;
+  --border-radius: 10px;
+
+  margin: 20px 0;
+  padding-left: 20px;
+  --padding-start: 0;
+  --min-height: 0;
+  // --inner-padding-end: 0;
+  background-color: $field-background;
+  --background: $field-background;
+  --background-activated: $field-background;
+
+  ion-input {
+    background-color: $field-background;
+  }
+}

@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of addresses">
+    <ion-card-content>
+      <ion-item>
+        <ion-text class="violet-text">
+          <span class="bold-text">{{ text?.city }}: </span>{{ item?.city }}
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text class="violet-text">
+          <span class="bold-text">{{ text?.street }}: </span>{{ item?.street }}
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text class="violet-text">
+          <span class="bold-text">{{ text?.phone }}: </span>{{ item?.number }}
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text class="violet-text">
+          <span class="bold-text">{{ text?.note }}: </span>{{ item?.note }}
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-text class="violet-text">
+          <span class="bold-text">{{ text?.mailbox }}: </span>{{ item?.zip }}
+        </ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="bottom-btn" (click)="navigateTo('order-sim-start')">{{ text?.ok }}</ion-button>
+  </ion-toolbar>
+</ion-footer>

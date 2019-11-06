@@ -1,0 +1,202 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="violet-text" defaultHref="login" text="{{ text ? text.to_login : '' }}">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-grid>
+        <ion-row>
+          <ion-col align-self-center>
+            <div id="logo">
+              <div id="top-part">
+                <div id="circle"></div>
+              </div>
+              <div id="bottom-part"></div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-horizontal>
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row id="text-block" class="violet-text" justify-content-between>
+        <ion-col>
+          <span>{{ text?.registration }}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div *ngIf="image.imgInfo.profile.deleted" id="upload-img-block" (click)="image.getPhoto('profile')">
+            <ion-img src="assets/screens/icon-profile.svg"></ion-img>
+            <div id="rect"></div>
+            <div id="label">
+              <ion-img src="assets/screens/upload-img.svg"></ion-img>
+            </div>
+          </div>
+          <div *ngIf="!image.imgInfo.profile.deleted" id="img-block"
+            [ngStyle]="{'background-image': 'url(' + image.imgInfo.profile.src + ')'}"
+            (click)="image.deletePhoto('profile')">
+            <div id="label">
+              <ion-img src="assets/screens/delete-img.svg"></ion-img>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col size-md="7" size-lg="5">
+          <ion-item class="violet-text register-form-field"
+            [class.error-field]="submitTry && form.get('first_name').invalid">
+            <ion-input type="text" formControlName="first_name" placeholder="{{ text?.first_name }}"></ion-input>
+          </ion-item>
+          <ion-item class="violet-text register-form-field"
+            [class.error-field]="submitTry && form.get('last_name').invalid">
+            <ion-input type="text" formControlName="last_name" placeholder="{{ text?.last_name }}"></ion-input>
+          </ion-item>
+          <ion-item class="violet-text register-form-field"
+            [class.error-field]="submitTry && form.get('email').invalid">
+            <ion-input type="email" formControlName="email" placeholder="{{ text?.email_address }}"></ion-input>
+          </ion-item>
+          <ion-item class="violet-text register-form-field"
+            [class.error-field]="submitTry && form.get('password').invalid">
+            <ion-input type="password" formControlName="password" placeholder="{{ text?.password }}"></ion-input>
+          </ion-item>
+          <ion-item class="violet-text register-form-field"
+            [class.error-field]="submitTry && form.get('confirm_password').invalid">
+            <ion-input type="password" formControlName="confirm_password" placeholder="{{ text?.confirm_password }}">
+            </ion-input>
+          </ion-item>
+          <ion-item class="violet-text register-form-field"
+            [class.error-field]="submitTry && form.get('language').invalid" (click)="presentActionSheet()">
+            <ion-input type="text" readonly formControlName="language" placeholder="{{ text?.select_language }}">
+            </ion-input>
+          </ion-item>
+          <ion-item
+            *ngIf="submitTry && (form.get('first_name').hasError('pattern') || form.get('last_name').hasError('pattern'))"
+            class="red-text">
+            <span>{{ text?.only_letters }}</span>
+          </ion-item>
+          <ion-item *ngIf="submitTry && form.get('email').hasError('email')" class="red-text">
+            <span>{{ text?.email_not_valid }}</span>
+          </ion-item>
+          <ion-item *ngIf="submitTry && form.get('password').hasError('noDigits')" class="red-text">
+            <span>{{ text?.password_one_digit }}</span>
+          </ion-item>
+          <ion-item *ngIf="submitTry && form.get('password').hasError('noLowercase')" class="red-text">
+            <span>{{ text?.password_one_lowercase }}</span>
+          </ion-item>
+          <ion-item *ngIf="submitTry && form.get('password').hasError('noUppercase')" class="red-text">
+            <span>{{ text?.password_one_uppercase }}</span>
+          </ion-item>
+          <ion-item *ngIf="submitTry && form.get('password').hasError('short')" class="red-text">
+            <span>{{ text?.password_minlength }}</span>
+          </ion-item>
+          <ion-item *ngIf="submitTry && form.get('confirm_password').hasError('unmatch')" class="red-text">
+            <span>{{ text?.password_not_match }}</span>
+          </ion-item>
+          <ion-item
+            *ngIf="submitTry && requireValidator('first_name', 'last_name', 'email', 'password', 'confirm_password', 'language')"
+            class="red-text">
+            <span>{{ text?.fill_empty_fields }}</span>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row id="text-block" class="violet-text">
+        <ion-col>{{ text?.attach_photo }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="attach-btn-col" size-5>
+          <div *ngIf="image.imgInfo.airline.deleted" (click)="image.getPhoto('airline')">
+            <div>
+              <ion-img src="assets/screens/upload-img.svg"></ion-img>
+            </div>
+            <ion-button class="attach-btn">
+              {{ text?.airline_tickets }}
+            </ion-button>
+          </div>
+          <div *ngIf="!image.imgInfo.airline.deleted" (click)="image.deletePhoto('airline')">
+            <div>
+              <ion-img src="assets/screens/delete-img.svg"></ion-img>
+            </div>
+            <ion-button class="attach-btn">
+              <div class="btn-img-wrapper" [ngStyle]="{'background-image': 'url(' + image.imgInfo.airline.src + ')'}">
+              </div>
+              <span class="hidden">{{ text?.airline_tickets }}</span>
+            </ion-button>
+          </div>
+        </ion-col>
+        <ion-col class="attach-btn-col" size-5>
+          <div *ngIf="image.imgInfo.travel.deleted" (click)="image.getPhoto('travel')">
+            <div>
+              <ion-img src="assets/screens/upload-img.svg"></ion-img>
+            </div>
+            <ion-button class="attach-btn">
+              {{ text?.travel_insurance }}
+            </ion-button>
+          </div>
+          <div *ngIf="!image.imgInfo.travel.deleted" (click)="image.deletePhoto('travel')">
+            <div>
+              <ion-img src="assets/screens/delete-img.svg"></ion-img>
+            </div>
+            <ion-button class="attach-btn">
+              <div class="btn-img-wrapper" [ngStyle]="{'background-image': 'url(' + image.imgInfo.travel.src + ')'}">
+              </div>
+              <span class="hidden">{{ text?.travel_insurance }}</span>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="attach-btn-col" size-5>
+          <div *ngIf="image.imgInfo.passport.deleted" (click)="image.getPhoto('passport')">
+            <div>
+              <ion-img src="assets/screens/upload-img.svg"></ion-img>
+            </div>
+            <ion-button class="attach-btn">
+              {{ text?.passport }}
+            </ion-button>
+          </div>
+          <div *ngIf="!image.imgInfo.passport.deleted" (click)="image.deletePhoto('passport')">
+            <div>
+              <ion-img src="assets/screens/delete-img.svg"></ion-img>
+            </div>
+            <ion-button class="attach-btn">
+              <div class="btn-img-wrapper" [ngStyle]="{'background-image': 'url(' + image.imgInfo.passport.src + ')'}">
+              </div>
+              <span class="hidden">{{ text?.passport }}</span>
+            </ion-button>
+          </div>
+        </ion-col>
+        <ion-col class="attach-btn-col" size-5>
+          <div *ngIf="image.imgInfo.medical.deleted" (click)="image.getPhoto('medical')">
+            <div>
+              <ion-img src="assets/screens/upload-img.svg"></ion-img>
+            </div>
+            <ion-button class="attach-btn">
+              {{ text?.medical_documents }}
+            </ion-button>
+          </div>
+          <div *ngIf="!image.imgInfo.medical.deleted" (click)="image.deletePhoto('medical')">
+            <div>
+              <ion-img src="assets/screens/delete-img.svg"></ion-img>
+            </div>
+            <ion-button class="attach-btn">
+              <div class="btn-img-wrapper" [ngStyle]="{'background-image': 'url(' + image.imgInfo.medical.src + ')'}">
+              </div>
+              <span class="hidden">{{ text?.medical_documents }}</span>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="bottom-btn" (click)="register()">{{ text?.sign_up }}</ion-button>
+  </ion-toolbar>
+</ion-footer>

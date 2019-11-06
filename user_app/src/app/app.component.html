@@ -1,0 +1,40 @@
+<ion-app>
+  <ion-menu #menu contentId="content">
+    <ion-content>
+      <ion-list no-padding no-margin>
+        <ion-item id="close-item" class="menu-item" [class.ios-item]="iosPlatform" (click)="menu.close()">
+          <ion-icon name="close"></ion-icon>
+        </ion-item>
+        <ion-item class="menu-item" (click)="navigateTo('/profile-start')">
+          <span>{{ text?.my_profile }}</span>
+        </ion-item>
+        <ion-item class="menu-item" (click)="navigateTo('/my-requests')">
+          <span>{{ text?.my_requests }}</span>
+        </ion-item>
+        <ion-item class="menu-item" (click)="navigateTo('/alerts-and-notifications-start')">
+          <span>{{ text?.alerts_and_notifications }}</span>
+        </ion-item>
+        <ion-item class="menu-item" (click)="navigateTo('/weather-start')">
+          <span>{{ text?.weather }}</span>
+        </ion-item>
+        <ion-item class="menu-item" (click)="navigateTo('/online-doctor-start')">
+          <span>{{ text?.online_doctor}}</span>
+        </ion-item>
+        <ion-item class="menu-item" (click)="navigateTo('/sim-card-choose')">
+          <span>{{ text?.sim_card_charges }}</span>
+        </ion-item>
+        <ion-item class="menu-item" (click)="navigateTo('/onboarding-tour', 'allow')">
+          <span>Onboarding tour</span>
+        </ion-item>
+        <ion-item class="menu-item" (click)="navigateTo('/privacy-policy')">
+          <span>{{ text?.privacy_policy }}</span>
+        </ion-item>
+        <ion-item *ngIf="isAuthorized" class="menu-item" (click)="logout()">
+          <span slot="start" class="bold-text">{{ text?.logout }}</span>
+          <ion-icon id="logout-icon" name="log-out" slot="end"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="content"></ion-router-outlet>
+</ion-app>

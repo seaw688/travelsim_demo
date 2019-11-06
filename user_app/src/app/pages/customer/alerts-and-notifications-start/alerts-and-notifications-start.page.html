@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-end>
+        <ion-img id="left-img" src="assets/screens/shopper.svg"></ion-img>
+      </ion-col>
+      <ion-col class="col-auto">
+        <div id="profile-no-img-block">
+          <div>
+            <ion-img src="assets/screens/alerts-and-notifications.svg"></ion-img>
+            <div id="rect"></div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col align-self-end>
+        <ion-img id="right-img" src="assets/screens/phone.svg"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-item id="profile-img-label" class="violet-text">
+    <span>{{ text?.security_alerts }}</span>
+  </ion-item>
+  <div id="text-block" padding>
+    <p class="violet-text">{{ text?.start_text }}</p>
+    <ul class="violet-text">
+      <li *ngFor="let item of text?.items_text">{{ item }}</li>
+    </ul>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="bottom-btn" (click)="navigateTo('/alerts-and-notifications')">{{ text?.go }}</ion-button>
+  </ion-toolbar>
+</ion-footer>

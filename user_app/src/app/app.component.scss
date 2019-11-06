@@ -1,0 +1,48 @@
+.menu-item {
+  position: relative;
+  font-weight: 100;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #88a0fc;
+  --color: white;
+  --inner-border-width: 0;
+  --background: #7c8bfe;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --padding-start: 30px;
+  --padding-end: 60px;
+
+  div {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    white-space: nowrap;
+    border: solid 1px white;
+    border-radius: 50%;
+    right: 20px;
+    padding-top: 6px;
+  }
+}
+
+#close-item {
+  --padding-start: 5px;
+}
+
+.ios-item {
+  --padding-top: 35px;
+}
+
+ion-icon {
+  font-size: 40px;
+  color: white;
+}
+
+ion-list {
+  min-height: 100%;
+  background-color: #7c8bfe;
+}
+
+#logout-icon {
+  height: 50%;
+}
