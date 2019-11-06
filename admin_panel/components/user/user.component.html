@@ -1,0 +1,146 @@
+<div class="component-container">
+  <h1 class="page-title" style="padding-bottom:0%;">Users</h1>
+  <component-loader *ngIf="!isDataAvailable"></component-loader>
+  <div *ngIf="isDataAvailable" class="">
+    <div class="page-title"><span class="breads" routerLink="/users">users</span> > <span>{{user.username}}</span></div>
+    <div class="flex-row-container">
+      <div class="flex-row-item">
+        <div class="user-info-input">
+          <div class="input-name">
+            <span class="span-bold-text">name</span>
+          </div>
+          <div class="input-value">
+            <input class="span-light-text user-input" type="text" value="{{user.name}}">
+          </div>
+        </div>
+      </div>
+      <div class="flex-row-item">
+        <div class="user-info-input">
+          <div class="input-name">
+            <span class="span-bold-text">E-mail address</span>
+          </div>
+          <div class="input-value">
+            <input class="span-light-text user-input" type="text" value=" {{user.email}}">
+          </div>
+        </div>
+      </div>
+      <div class="flex-row-item">
+        <div class="user-info-input">
+          <div class="input-name">
+            <span class="span-bold-text">language</span>
+          </div>
+          <div class="input-value">
+            <input class="span-light-text user-input" type="text" value=" {{user.lang}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-row-container">
+      <div class="flex-row-item">
+        <div class="user-info-input">
+          <div class="input-name">
+            <span class="span-bold-text">user name</span>
+          </div>
+          <div class="input-value">
+            <input class="span-light-text user-input" type="text" value=" {{user.username}}">
+          </div>
+        </div>
+      </div>
+      <div class="flex-row-item">
+        <div class="user-info-input">
+          <div class="input-name">
+            <span class="span-bold-text">password</span>
+          </div>
+          <div class="input-value">
+            <input class="span-light-text user-input" type="text" value=" {{user.password}}">
+          </div>
+        </div>
+      </div>
+      <div class="flex-row-item">
+        <div class="user-info-input">
+          <div class="input-name">
+            <span class="span-bold-text">sim card number</span>
+          </div>
+          <div class="input-value">
+            <input class="span-light-text user-input" type="text" value=" {{user.sim}}">
+          </div>
+        </div>
+      </div>
+      <div class="flex-row-item">
+        <div class="user-info-input">
+          <div class="input-name">
+            <span class="span-bold-text">phone number</span>
+          </div>
+          <div class="input-value">
+            <input class="span-light-text user-input" type="text" value=" {{user.phone}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app">
+      <app-modal [show]="showModal" [customClass]="'custom_modal_class'" [closeCallback]="toggleModal">
+        <img src="{{currentImage}}">
+      </app-modal>
+    </div>
+    <div class="row top-30">
+      <div class="col">
+        <h6 class="span-bold-text">Passport photo, airline tickets And travel insurance</h6>
+        <div class="row top-30">
+          <div *ngIf="user.photo" class="file-block">
+            <div class="file-preview">
+              <img (click)="toggleModal(user.photo)" src="../assets/images/clip-ico.jpg">
+            </div>
+          </div>
+          <div *ngIf="user.airline_image" class="file-block">
+            <div class="file-preview">
+              <img (click)="toggleModal(user.airline_image)" src="../assets/images/clip-ico.jpg">
+            </div>
+          </div>
+          <div *ngIf="user.travel_image" class="file-block">
+            <div class="file-preview">
+              <img (click)="toggleModal(user.travel_image)" src="../assets/images/clip-ico.jpg">
+            </div>
+          </div>
+          <div *ngIf="user.passport_image" class="file-block">
+            <div class="file-preview">
+              <img (click)="toggleModal(user.passport_image)" src="../assets/images/clip-ico.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row top-30">
+      <div class="col-md-12">
+        <h6 class="span-bold-text">Active request of UserX:</h6>
+        <div class="row top-30">
+          <div class="col-md-3">
+            <p routerLink="/alerts" class="user-request active-request">Alerts</p>
+            <p routerLink="/services" class="user-request active-request">Check Up Services</p>
+            <p class="user-request">Translations Services</p>
+            <p class="user-request active-request">Short time Apartments</p>
+          </div>
+          <div class="col-md-3">
+            <p class="user-request">Currency Exchange Rates</p>
+            <p routerLink="/insurance" class="user-request">Insurance</p>
+            <p routerLink="/tickets" class="user-request active-request">Tickets</p>
+            <p routerLink="/taxi" class="user-request">Taxi service</p>
+          </div>
+          <div class="col-md-3">
+            <p routerLink="/sims" class="user-request active-request">Sim card charges</p>
+            <p routerLink="/consular" class="user-request">Consular services</p>
+            <p routerLink="/tours" class="user-request">Tours</p>
+            <p class="user-request">Discounts and Benefits</p>
+          </div>
+          <div class="col-md-3">
+            <p routerLink="/online-doctor" class="user-request active-request">OnLine Doctor</p>
+            <p routerLink="/online-doctor/ambulance" class="user-request">ambulance</p>
+            <p routerLink="/online-doctor/phone-call" class="user-request">phone call</p>
+            <p routerLink="/online-doctor/video-chat" class="user-request">video chat</p>
+            <p routerLink="/online-doctor/medical-escort/" class="user-request">Medical escort</p>
+            <p routerLink="/online-doctor/doctor-appointment" class="user-request">doctor appointment</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

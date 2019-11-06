@@ -1,0 +1,6 @@
+<div class="component-container">
+    <h1 class="page-title">Users</h1>
+      <component-loader *ngIf="!isDataAvailable"></component-loader>
+      <ng2-smart-table *ngIf="isDataAvailable" [settings]="settings" [source]="source"></ng2-smart-table>
+      <div *ngIf="isDataAvailable" routerLink="/add-user" class="plus-btn"></div>
+</div>

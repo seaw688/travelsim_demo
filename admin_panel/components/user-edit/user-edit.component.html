@@ -1,0 +1,175 @@
+<div class="component-container">
+    <h1 *ngIf="edit" class="page-title">User Update</h1>
+    <h1 *ngIf="!edit" class="page-title">Add new User</h1>
+    <component-loader *ngIf="!isDataAvailable"></component-loader>
+    <form *ngIf="isDataAvailable" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="page-title"><span class="breads" routerLink="/users">users</span> > <span>{{user?.username}}</span></div>
+        <div class="flex-row-container">
+            <div class="flex-row-item">
+                <div class="user-info-input" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text" for="first_name">First Name</span>
+                    </div>
+                    <div class="input-value">
+                        <input type="text" formControlName="first_name" class="span-light-text user-input"
+                            [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
+                    </div>
+                    <div *ngIf="submitted && f.first_name.errors" class="invalid">
+                        <div *ngIf="f.first_name.errors.required">First Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row-item">
+                <div class="user-info-input" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text" for="email">Email</span>
+                    </div>
+                    <div class="input-value">
+                        <input type="email" formControlName="email" class="span-light-text user-input"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    </div>
+                    <div *ngIf="submitted && f.email.errors" class="invalid">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Enter valid email address</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row-item">
+                <div class="user-info-input" [ngClass]="{ 'is-invalid': submitted && f.lang.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text">language</span>
+                    </div>
+                    <div class="input-value">
+                        <ng-multiselect-dropdown idField="multi-select" name="lang" [placeholder]="' '"
+                            [data]="langs" formControlName="lang" [(ngModel)]="selectedItem" [disabled]="disabled"
+                            [settings]="dropdownSettings">
+                        </ng-multiselect-dropdown>
+                    </div>
+                    <div *ngIf="submitted && f.lang.errors" class="invalid">
+                        <div *ngIf="f.lang.errors.required">Language is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row-container">
+            <div class="flex-row-item">
+                <div class="form-group user-info-input" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text" for="username">Username</span>
+                    </div>
+                    <div class="input-value">
+                        <input type="text" formControlName="username" class="span-light-text user-input" />
+
+                    </div>
+                    <div *ngIf="submitted && f.username.errors" class="invalid">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row-item">
+                <div class="user-info-input" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text" for="last_name">Last name</span>
+                    </div>
+                    <div class="input-value">
+                        <input type="last_name" formControlName="last_name" class="span-light-text user-input"
+                            [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" />
+
+                    </div>
+                    <div *ngIf="submitted && f.last_name.errors" class="invalid">
+                        <div *ngIf="f.last_name.errors.required">Last name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row-item">
+                <div class="user-info-input" [ngClass]="{ 'is-invalid': submitted && f.is_active.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text">Status</span>
+                    </div>
+                    <div class="input-select-value">
+                        <select formControlName="is_active">
+                            <option value="true">Active</option>
+                            <option value="false">Blocked</option>
+                        </select>
+                    </div>
+                    <div *ngIf="submitted && f.is_active.errors" class="invalid">
+                        <div *ngIf="f.is_active.errors.required">Status is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row-container">
+            <div class="flex-row-item">
+                <div class="user-info-input" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text" for="phone">Phone Number</span>
+                    </div>
+                    <div class="input-value">
+                        <input type="phone" formControlName="phone" class="span-light-text user-input"
+                            [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+
+                    </div>
+                    <div *ngIf="submitted && f.phone.errors" class="invalid">
+                        <div *ngIf="f.phone.errors.required">Phone Number is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row-item">
+                <div class="user-info-input" [ngClass]="{ 'is-invalid': submitted && f.sim_number.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text" for="sim_number">Sim number</span>
+                    </div>
+                    <div class="input-value">
+                        <input type="sim_number" formControlName="sim_number" class="span-light-text user-input"
+                            [ngClass]="{ 'is-invalid': submitted && f.sim_number.errors }" />
+
+                    </div>
+                    <div *ngIf="submitted && f.sim_number.errors" class="invalid">
+                        <div *ngIf="f.sim_number.errors.required">Sim number</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row-item">
+                <div class="user-info-input" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text">Role</span>
+                    </div>
+                    <div class="input-select-value">
+                        <select formControlName="role">
+                            <option value="ADMIN">ADMIN</option>
+                            <option value="DOCTOR">DOCTOR</option>
+                            <option value="CUSTOMER">CUSTOMER</option>
+                            <option value="MANAGER">MANAGER</option>
+                        </select>
+                    </div>
+                    <div *ngIf="submitted && f.role.errors" class="invalid">
+                        <div *ngIf="f.role.errors.required">Role is required</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!edit" class="flex-row-item">
+                <div class="user-info-input" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                    <div class="input-name">
+                        <span class="span-bold-text">Password</span>
+                    </div>
+                    <div class="input-value">
+                        <input type="password" formControlName="password" class="span-light-text user-input"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    </div>
+                    <div *ngIf="submitted && f.password.errors" class="invalid">
+                        <div *ngIf="f.password.errors.required">password is required</div>
+                        <div *ngIf="f.password.errors">password must be at least 8 characters and must contain numbers
+                            and letters</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group user-form-control" style="margin-top:20px">
+            <button [disabled]="loading" class="simple-bnt simple-btn-active">{{textSubmit}}</button>
+            <button routerLink="/users" [disabled]="loading" class="simple-bnt"
+                style="margin-top:5px;color: red">Cancel</button>
+            <img *ngIf="loading" class="pl-3"
+                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </div>
+    </form>
+</div>
