@@ -18,7 +18,7 @@ django-js-asset==1.1.0
 django-mptt==0.9.1
 django-rest-auth==0.9.3
 django-rest-passwordreset==0.9.7
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 facebook-sdk==3.1.0
 google-auth==1.6.3
 hyperlink==18.0.0
